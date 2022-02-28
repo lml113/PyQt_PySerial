@@ -29,7 +29,7 @@
     <property name="title">
      <string>串口设置</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -442,7 +442,7 @@
       </size>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -559,8 +559,8 @@
   <action name="action_start">
    <property name="icon">
     <iconset>
-     <normalon>image/start.ico</normalon>
-    </iconset>
+     <normaloff>image/start.ico</normaloff>
+     <normalon>C:/Users/32852/.designer/backup/image/start.ico</normalon>image/start.ico</iconset>
    </property>
    <property name="text">
     <string>开始</string>
