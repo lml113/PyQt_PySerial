@@ -2,6 +2,7 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 import Ui_PyQt_PySerial
 
 class myMainWindow(QMainWindow,Ui_PyQt_PySerial.Ui_MainWindow):
@@ -13,6 +14,11 @@ class myMainWindow(QMainWindow,Ui_PyQt_PySerial.Ui_MainWindow):
         self.setWindowIcon(QIcon('./image/uart.ico'))
         self.setWindowTitle('串口助手')
         self.textBrowser.setFont(QFont('Arial',16))
+        self.settings = QSettings("config.ini",QSettings.IniFormat)
+        self.settings.setIniCodec('UTF-8')
+
+        self.config_uart_baud = self.settings.value("SETUP/UART_BAUD",0,type=str)
+        self.comboBox_2.setCurrentText(self.config_uart_baud)
 
         self.radioButton_1.setChecked(True)
         self.radioButton_3.setChecked(True)
@@ -29,9 +35,11 @@ class myMainWindow(QMainWindow,Ui_PyQt_PySerial.Ui_MainWindow):
         self.action_clear.triggered.connect(self.action_x_cd)
     def comboBoxChanged(self):
         comboBox_x = self.sender()
-        print(comboBox_x.currentText())
-        """ if comboBox_x==self.comboBox_2:
-            print(self.comboBox_2.currentText())
+        #print(comboBox_x.currentText())
+        if comboBox_x==self.comboBox_2:
+            uart_baud = self.comboBox_2.currentText()
+            print('current uaet baud is ',uart_baud)
+            self.settings.setValue('SETUP/UART_BAUD',uart_baud)
         elif comboBox_x==self.comboBox_3:
             print(self.comboBox_3.currentText())
         elif comboBox_x==self.comboBox_4:
@@ -39,7 +47,7 @@ class myMainWindow(QMainWindow,Ui_PyQt_PySerial.Ui_MainWindow):
         elif comboBox_x==self.comboBox_5:
             print(self.comboBox_5.currentText())
         else :
-            print(self.comboBox_6.currentText()) """
+            print(self.comboBox_6.currentText())
     def PushButton_send(self):
         print(self.textEdit.toPlainText())
         self.textBrowser.append(self.textEdit.toPlainText())
