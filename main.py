@@ -12,10 +12,10 @@ class myMainWindow(QMainWindow,Ui_PyQt_PySerial.Ui_MainWindow):
     def InitUI(self):
         self.setWindowIcon(QIcon('./image/uart.ico'))
         self.setWindowTitle('串口助手')
-        #self.textBrowser.setFont(QFont('Arial',16))
+        self.textBrowser.setFont(QFont('Arial',16))
 
-        #self.radioButton_1.setChecked(True)
-        #self.radioButton_3.setChecked(True)
+        self.radioButton_1.setChecked(True)
+        self.radioButton_3.setChecked(True)
         # 绑定信号与槽
         self.comboBox_2.currentIndexChanged.connect(self.comboBoxChanged)
         self.comboBox_3.currentIndexChanged.connect(self.comboBoxChanged)
